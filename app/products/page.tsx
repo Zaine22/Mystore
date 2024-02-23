@@ -33,6 +33,13 @@ export default function ProductPage() {
     getProducts();
   };
 
+  const handleView = (item: any) => {
+    window.location.href = "/products/view/" + item?.id;
+  };
+  const handleEdit = (item: any) => {
+    window.location.href = "/products/edit/" + item?.id;
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -46,7 +53,15 @@ export default function ProductPage() {
           <IonItem key={index}>
             {item?.Name}
             <IonButtons slot="end">
-              <IonButton onClick={() => handleDelete(item)}>Delete</IonButton>
+              <IonButton onClick={() => handleView(item)} fill="outline">
+                View
+              </IonButton>
+              <IonButton onClick={() => handleEdit(item)} fill="outline">
+                Edit
+              </IonButton>
+              <IonButton onClick={() => handleDelete(item)} fill="outline">
+                Delete
+              </IonButton>
             </IonButtons>
           </IonItem>
         ))}
